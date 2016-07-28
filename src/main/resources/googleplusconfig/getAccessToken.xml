@@ -43,6 +43,8 @@ tasks app."/>
                 <arg expression="$func:refreshToken"/>
             </args>
         </payloadFactory>
+        <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2"/>
+
         <call>
             <endpoint>
                 <http method="post" uri-template="https://accounts.google.com/o/oauth2/token"/>

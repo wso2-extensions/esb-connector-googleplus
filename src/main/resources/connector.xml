@@ -22,7 +22,6 @@
         <dependency component="googleplusconfig"/>
         <dependency component="activities"/>
         <dependency component="comments"/>
-        <dependency component="moments"/>
         <dependency component="people"/>
     </component>
     <icon>icon/icon-large.gif</icon>
