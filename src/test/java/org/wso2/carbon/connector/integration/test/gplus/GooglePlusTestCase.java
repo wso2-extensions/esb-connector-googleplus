@@ -2035,93 +2035,6 @@ public class GooglePlusTestCase extends ESBIntegrationTest {
         }
     }
 
-    /* Test cases for Moments */
-
-    /**
-     * Mandatory parameter test case for listMoments method.
-     */
-    @Test(groups = {"wso2.esb"},
-            description = "GooglePlus {listMoments} integration test with mandatory parameters.")
-    public void testListMomentsWithMandatoryParams() throws Exception {
-
-        String jsonRequestFilePath = pathToRequestsDirectory + "listMoments.txt";
-        String methodName = "listMoments";
-        final String requestJsonString =
-                ConnectorIntegrationUtil.getFileContent(jsonRequestFilePath);
-        final String proxyFilePath = "file:///" + pathToProxiesDirectory + methodName + ".xml";
-        proxyAdmin.addProxyService(new DataHandler(new URL(proxyFilePath)));
-        JSONObject jsonObject = new JSONObject(requestJsonString);
-        jsonObject.append("apiUrl", googlePlusConnectorProperties.getProperty("apiUrl"));
-        jsonObject.append("clientId", googlePlusConnectorProperties.getProperty("clientId"));
-        jsonObject.append("clientSecret", googlePlusConnectorProperties.getProperty("clientSecret"));
-        jsonObject.append("refreshToken", googlePlusConnectorProperties.getProperty("refreshToken"));
-        String modifiedJsonString = jsonObject.toString().replace("[", "").replace("]", "");
-        try {
-
-            JSONObject responseJson = ConnectorIntegrationUtil
-                    .sendRequest(getProxyServiceURL(methodName), modifiedJsonString);
-            junit.framework.Assert.assertEquals("plus#momentsFeed", responseJson.getString("kind"));
-        } finally {
-            proxyAdmin.deleteProxy(methodName);
-        }
-    }
-
-    /**
-     * Optional parameter test case for listMoments method.
-     */
-    @Test(groups = {"wso2.esb"},
-            description = "GooglePlus {listMoments} integration test with mandatory and optional parameters.")
-    public void testListMomentsWithOptionalParams() throws Exception {
-        String jsonRequestFilePath = pathToRequestsDirectory + "listMomentsOptionalParams.txt";
-        String methodName = "listMoments";
-        final String requestJsonString =
-                ConnectorIntegrationUtil.getFileContent(jsonRequestFilePath);
-        final String proxyFilePath = "file:///" + pathToProxiesDirectory + methodName + ".xml";
-        proxyAdmin.addProxyService(new DataHandler(new URL(proxyFilePath)));
-        JSONObject jsonObject = new JSONObject(requestJsonString);
-        jsonObject.append("apiUrl", googlePlusConnectorProperties.getProperty("apiUrl"));
-        jsonObject.append("clientId", googlePlusConnectorProperties.getProperty("clientId"));
-        jsonObject.append("clientSecret", googlePlusConnectorProperties.getProperty("clientSecret"));
-        jsonObject.append("refreshToken", googlePlusConnectorProperties.getProperty("refreshToken"));
-        String modifiedJsonString = jsonObject.toString().replace("[", "").replace("]", "");
-        try {
-            JSONObject responseJson = ConnectorIntegrationUtil
-                    .sendRequest(getProxyServiceURL(methodName), modifiedJsonString);
-            junit.framework.Assert.assertEquals("plus#momentsFeed", responseJson.getString("kind"));
-        } finally {
-            proxyAdmin.deleteProxy(methodName);
-        }
-    }
-
-    /**
-     * Negative parameter test case for listMoments method.
-     */
-    @Test(groups = {"wso2.esb"},
-            description = "GooglePlus {listMoments} integration test with Negative parameters.")
-    public void testListMomentsWithNegativeParams() throws Exception {
-
-        String jsonRequestFilePath = pathToRequestsDirectory + "listMomentsUnhappy.txt";
-        String methodName = "listMoments";
-        final String requestJsonString =
-                ConnectorIntegrationUtil.getFileContent(jsonRequestFilePath);
-        final String proxyFilePath = "file:///" + pathToProxiesDirectory + methodName + ".xml";
-        proxyAdmin.addProxyService(new DataHandler(new URL(proxyFilePath)));
-        JSONObject jsonObject = new JSONObject(requestJsonString);
-        jsonObject.append("apiUrl", googlePlusConnectorProperties.getProperty("apiUrl"));
-        jsonObject.append("clientId", googlePlusConnectorProperties.getProperty("clientId"));
-        jsonObject.append("clientSecret", googlePlusConnectorProperties.getProperty("clientSecret"));
-        jsonObject.append("refreshToken", googlePlusConnectorProperties.getProperty("refreshToken"));
-        String modifiedJsonString = jsonObject.toString().replace("[", "").replace("]", "");
-        try {
-            int statusCode = ConnectorIntegrationUtil
-                    .sendRequestToRetrieveHeaders(getProxyServiceURL(methodName), modifiedJsonString);
-            junit.framework.Assert.assertEquals(statusCode, 400);
-        } finally {
-            proxyAdmin.deleteProxy(methodName);
-        }
-    }
-
-
     /* Test cases for People*/
 
     /**
@@ -2782,6 +2695,7 @@ public class GooglePlusTestCase extends ESBIntegrationTest {
 
             JSONObject responseJson = ConnectorIntegrationUtil
                     .sendRequest(getProxyServiceURL(methodName), modifiedJsonString);
+
             if (responseJson.has("nextPageToken")) {
                 googlePlusConnectorProperties.setProperty("listPeoplePageToken", responseJson.getString("nextPageToken"));
             } else {
@@ -3586,9 +3500,10 @@ public class GooglePlusTestCase extends ESBIntegrationTest {
 
             int statusCode = ConnectorIntegrationUtil
                     .sendRequestToRetrieveHeaders(getProxyServiceURL(methodName), modifiedJsonString);
-            junit.framework.Assert.assertTrue(statusCode == 404 || statusCode == 403);
+            junit.framework.Assert.assertTrue(statusCode == 400 || statusCode == 400);
         } finally {
             proxyAdmin.deleteProxy(methodName);
         }
     }
+
 }
