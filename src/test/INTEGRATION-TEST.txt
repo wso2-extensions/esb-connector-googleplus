@@ -10,12 +10,14 @@ Pre-requisites:
 Tested Platform: 
 
  - Mac OSX 10.9.4 and Ubuntu 14.04 64bit 
- - WSO2 ESB 4.9.0
+ - WSO2 ESB 4.9.0,5.0.0-BETA
  - Java 1.7
 
 STEPS:
 
-1. This section describes how to obtain an access token from the google oauth.
+1.Download WSO2 ESB  5.0.0-BETA and add "-XX:-UseSplitVerifier" under $JVM_MEM_OPTS into {ESB_HOME}/bin/wso2server.sh".
+
+2. This section describes how to obtain an access token from the google oauth.
 	
 	i) 	Login to your google developer account, then navigate to url: https://console.developers.google.com/project and create new project.
 	 
@@ -38,7 +40,7 @@ STEPS:
 
 	vii)getAccessToken.xml configuration will obtain the temporary access token using these property values.
 
-2. Navigate to "{ESB_Connector_Home}/" and run the following command.
+3. Navigate to "{ESB_Connector_Home}/" and run the following command.
      $ mvn clean install
 
 Notes: 
