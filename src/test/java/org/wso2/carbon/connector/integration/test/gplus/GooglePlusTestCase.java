@@ -72,7 +72,7 @@ public class GooglePlusTestCase extends ESBIntegrationTest {
         proxyAdmin = new ProxyServiceAdminClient(esbServer.getBackEndUrl(),
                 esbServer.getSessionCookie());
 
-        String CONNECTOR_NAME = "googleplus-connector-1.0.1";
+        String CONNECTOR_NAME = "googleplus-connector-1.0.2-SNAPSHOT";
         String googlePlusConnectorFileName = CONNECTOR_NAME + ".zip";
         ConnectorIntegrationUtil
                 .uploadConnector(repoLocation, mediationLibUploadStub, googlePlusConnectorFileName);
