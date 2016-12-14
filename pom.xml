@@ -27,7 +27,6 @@
     <url>http://wso2.org</url>
     <properties>
         <connector.name>googleplus</connector.name>
-        <connector.version>1.0.0</connector.version>
         <test.framework.version>4.2.0</test.framework.version>
         <esb.version>5.0.0-BETA</esb.version>
         <carbon.kernel.version>4.4.1</carbon.kernel.version>
