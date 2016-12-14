@@ -186,7 +186,7 @@
                             <goal>attached</goal>
                         </goals>
                         <configuration>
-                            <finalName>${connector.name}-connector-${connector.version}</finalName>
+                            <finalName>${connector.name}-connector-${version}</finalName>
                             <appendAssemblyId>false</appendAssemblyId>
                             <filters>
                                 <filter>src/main/assembly/filter.properties</filter>
