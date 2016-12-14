@@ -95,6 +95,7 @@ public class GooglePlusTestCase extends ESBIntegrationTest {
     protected void cleanup() {
         axis2Client.destroy();
     }
+
     /* Test cases for Activities */
 
     /**
