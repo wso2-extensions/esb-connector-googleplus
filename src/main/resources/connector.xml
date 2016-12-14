@@ -23,6 +23,7 @@
         <dependency component="activities"/>
         <dependency component="comments"/>
         <dependency component="people"/>
+      <description>WSO2 ESB Connector Library for docuSign API.</description>
     </component>
     <icon>icon/icon-large.gif</icon>
 </connector>
