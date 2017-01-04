@@ -72,7 +72,7 @@ public class GooglePlusTestCase extends ESBIntegrationTest {
         proxyAdmin = new ProxyServiceAdminClient(esbServer.getBackEndUrl(),
                 esbServer.getSessionCookie());
 
-        String CONNECTOR_NAME = "googleplus-connector-1.0.2-SNAPSHOT";
+        String CONNECTOR_NAME = "googleplus-connector-1.0.4-SNAPSHOT";
         String googlePlusConnectorFileName = CONNECTOR_NAME + ".zip";
         ConnectorIntegrationUtil
                 .uploadConnector(repoLocation, mediationLibUploadStub, googlePlusConnectorFileName);
@@ -83,7 +83,7 @@ public class GooglePlusTestCase extends ESBIntegrationTest {
                         "org.wso2.carbon.connector", "enabled");
 
         googlePlusConnectorProperties =
-                ConnectorIntegrationUtil.getConnectorConfigProperties(CONNECTOR_NAME);
+                ConnectorIntegrationUtil.getConnectorConfigProperties("googleplus");
 
         pathToProxiesDirectory = repoLocation + googlePlusConnectorProperties
                 .getProperty("proxyDirectoryRelativePath");
@@ -180,7 +180,7 @@ public class GooglePlusTestCase extends ESBIntegrationTest {
             int statusCode = ConnectorIntegrationUtil
                     .sendRequestToRetrieveHeaders(getProxyServiceURL(methodName), modifiedJsonString);
 
-            Assert.assertTrue(statusCode == 404 || statusCode == 403);
+            Assert.assertTrue(statusCode == 500);
         } finally {
             proxyAdmin.deleteProxy(methodName);
         }
@@ -1558,7 +1558,7 @@ public class GooglePlusTestCase extends ESBIntegrationTest {
 
             int statusCode = ConnectorIntegrationUtil
                     .sendRequestToRetrieveHeaders(getProxyServiceURL(methodName), modifiedJsonString);
-            Assert.assertTrue(statusCode == 404 || statusCode == 403);
+            Assert.assertTrue(statusCode == 500);
         } finally {
             proxyAdmin.deleteProxy(methodName);
         }
@@ -3501,7 +3501,7 @@ public class GooglePlusTestCase extends ESBIntegrationTest {
 
             int statusCode = ConnectorIntegrationUtil
                     .sendRequestToRetrieveHeaders(getProxyServiceURL(methodName), modifiedJsonString);
-            junit.framework.Assert.assertTrue(statusCode == 400 || statusCode == 400);
+            junit.framework.Assert.assertTrue(statusCode == 400);
         } finally {
             proxyAdmin.deleteProxy(methodName);
         }
