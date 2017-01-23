@@ -9,13 +9,13 @@ Pre-requisites:
 
 Tested Platform: 
 
- - Mac OSX 10.9.4 and Ubuntu 14.04 64bit 
- - WSO2 ESB 4.9.0,5.0.0-BETA
+ - Mac OSX 10.9.4 and Ubuntu 16.04 64bit
+ - WSO2 ESB 4.9.0, 5.0.0
  - Java 1.7
 
 STEPS:
 
-1.Download WSO2 ESB  5.0.0-BETA and add "-XX:-UseSplitVerifier" under $JVM_MEM_OPTS into {ESB_HOME}/bin/wso2server.sh".
+1.Download WSO2 ESB  5.0.0 and add "-XX:-UseSplitVerifier" under $JVM_MEM_OPTS into {ESB_HOME}/bin/wso2server.sh".
 
 2. This section describes how to obtain an access token from the google oauth.
 	
