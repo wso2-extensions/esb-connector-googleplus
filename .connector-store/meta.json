@@ -4,7 +4,7 @@
     "category": "Social Media",
     "documentationUrl": "https://docs.wso2.com/display/ESBCONNECTORS/GooglePlus+Connector",
     "description": "The Google Plus connector allows you to access the Google plus REST API through WSO2 ESB.Google Plus Connector allows you to connect to google plus and manage Google Plus Activities, Comments, Moments, People and Profiles.",
-    "status": "Unsupported",
+    "status": "Active",
     "labels": [
         "connector"
     ],
